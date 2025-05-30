@@ -1,14 +1,39 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import MainAppLayout from '../components/layout/MainAppLayout';
+import PageHeader from '../components/Dashboard/PageHeader';
+import FunnelCard from '../components/Dashboard/FunnelCard';
+import SourcesCard from '../components/Dashboard/SourcesCard';
+import TrackingChart from '../components/Dashboard/TrackingChart';
+import StatisticsGrid from '../components/Dashboard/StatisticsGrid';
 
-const Index = () => {
+/**
+ * LeadsDashboardPage serves as the main view for the leads tracking dashboard.
+ * It utilizes MainAppLayout for the overall page structure (sidebar, header)
+ * and assembles various dashboard-specific organism components within the main content area.
+ */
+const LeadsDashboardPage: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <MainAppLayout>
+      {/* Container for all dashboard content, applying vertical stacking and gaps */}
+      {/* This aligns with layoutRequirements.mainContent.container */}
+      <div className="flex flex-col gap-6">
+        {/* PageHeader displays the title "Dashboard" and relevant tabs/filters */}
+        <PageHeader title="Dashboard" />
+        
+        {/* Section for FunnelCard and SourcesCard, displayed side-by-side on larger screens */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <FunnelCard />
+          <SourcesCard />
+        </div>
+
+        {/* Section for the main TrackingChart, typically spanning full width */}
+        <TrackingChart />
+
+        {/* Section for StatisticsGrid, also typically spanning full width */}
+        <StatisticsGrid />
       </div>
-    </div>
+    </MainAppLayout>
   );
 };
 
-export default Index;
+export default LeadsDashboardPage;
