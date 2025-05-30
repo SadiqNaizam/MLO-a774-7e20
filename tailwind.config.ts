@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -18,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+      fontFamily: {
+        sans: ['Inter', ...fontFamily.sans],
+      },
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -52,21 +56,20 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+        /* PRD specific colors */
+        'sidebar': 'hsl(var(--sidebar-background))',
+        'accent-blue': '#3B82F6',
+        'accent-red': '#EF4444',
+        'accent-green': '#10B981',
+        'primary-text': '#212529',
+        'secondary-text': '#6B7280',
+        'surface': '#FFFFFF', // Already covered by card/popover
+        'border-color': '#E5E7EB' // Already covered by border
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: 'var(--radius)', // Corresponds to 0.375rem (rounded-md)
+				md: 'calc(var(--radius) - 2px)', // Corresponds to 0.25rem (rounded-sm or PRD 'rounded' for buttons)
+				sm: 'calc(var(--radius) - 4px)' // Corresponds to 0.125rem (rounded-xs)
 			},
 			keyframes: {
 				'accordion-down': {
